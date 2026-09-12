@@ -1,0 +1,17 @@
+# Claude Code tooling and skill data — local only, not part of the website
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (only if you ever add build tooling)
+node_modules/
+npm-debug.log*
