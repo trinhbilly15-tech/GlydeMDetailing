@@ -22,7 +22,7 @@ var CATALOG = {
         name: "Basic Interior",
         available: true,
         popular: false,
-        price: { sedan: 75, suv: 100 },
+        price: { sedan: 100, suv: 125 },
         duration: "1.5 – 2.5 hours",
         bestFor: "Routine upkeep & lease returns",
         blurb: "A thorough top-to-bottom clean of everything you touch and see inside the car. We vacuum, wipe, degrease and deodorize the whole cabin so it feels fresh again — without the cost of a full restoration.",
@@ -62,7 +62,7 @@ var CATALOG = {
         name: "Basic Exterior",
         available: true,
         popular: false,
-        price: { sedan: 75, suv: 100 },
+        price: { sedan: 100, suv: 125 },
         duration: "1.5 – 2.5 hours",
         bestFor: "Maintenance washes & restoring gloss",
         blurb: "A proper hand wash — not a tunnel wash. We use safe two-bucket technique and plush microfiber so the paint comes out clean and glossy without the swirl marks automatic washes leave behind.",
@@ -101,7 +101,7 @@ var CATALOG = {
         name: "Basic Full Detail",
         available: true,
         popular: true,
-        price: { sedan: 150, suv: 200 },
+        price: { sedan: 200, suv: 250 },
         duration: "3 – 5 hours",
         bestFor: "First-time clients, seasonal resets & pre-sale prep",
         blurb: "Everything in the Basic Interior and Basic Exterior packages, done in one visit. This is the package most people book first — it resets the whole vehicle at once instead of chasing one half at a time.",
@@ -134,6 +134,10 @@ var VEHICLES = {
   sedan: "Sedan / Coupe",
   suv: "SUV / Truck"
 };
+
+/* Student discount on package prices (0.20 = 20%). Set to 0 to hide the student price
+   in the package tabs — the "20%" wording in index.html must then be removed by hand. */
+var STUDENT_DISCOUNT = 0.20;
 
 var TIER_ORDER = ["basic", "premium", "ultimate"];
 var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
@@ -260,6 +264,11 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
               '<p class="price"><span class="price-currency">$</span><span class="price-amount">' +
                 tier.price[state.vehicle] + "</span></p>" +
               '<p class="price-vehicle">' + esc(VEHICLES[state.vehicle]) + " &middot; " + esc(tier.name) + "</p>" +
+              (STUDENT_DISCOUNT > 0
+                ? '<p class="price-student"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5 2.5 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6.5 11v4.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8V11M21.5 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' +
+                  "<span>Students pay <strong>$" + Math.round(tier.price[state.vehicle] * (1 - STUDENT_DISCOUNT)) +
+                  "</strong> with a valid student ID</span></p>"
+                : "") +
             "</div>" +
             '<div class="price-card-actions">' +
               '<a class="btn btn-primary btn-block" href="#booking">Book this package</a>' +
