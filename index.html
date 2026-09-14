@@ -646,15 +646,10 @@
           <p class="pay-status" id="pay-status" role="status" aria-live="polite"></p>
         </div>
         <!--
-          STRIPE SETUP:
-          1. Create an account at https://dashboard.stripe.com/register
-          2. Product catalog -> Add a product (e.g. "Detailing Service Payment").
-             Under pricing, choose "Customer chooses price".
-          3. Create a payment link for it and copy the URL (https://buy.stripe.com/...).
-          4. Replace YOUR-STRIPE-PAYMENT-LINK in the href below.
-          Until you do, the button shows a friendly message instead of a broken page.
+          STRIPE: live payment link "Glyde Mobile Detailing – Service Payment" (customer enters the amount).
+          To use a different link, copy it from Stripe Dashboard -> Payment Links and replace the href below.
         -->
-        <a class="btn btn-primary btn-lg" id="pay-btn" href="https://buy.stripe.com/YOUR-STRIPE-PAYMENT-LINK" target="_blank" rel="noopener">
+        <a class="btn btn-primary btn-lg" id="pay-btn" href="https://book.stripe.com/bJeaEX67uaoGae64Ai4ko00" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="1.7"/></svg>
           Pay Online
         </a>

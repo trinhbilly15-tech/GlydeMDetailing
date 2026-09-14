@@ -12,6 +12,9 @@ desktop.ini
 .idea/
 *.swp
 
+# Upload bundles made for web hosting
+*.zip
+
 # Node (only if you ever add build tooling)
 node_modules/
 npm-debug.log*
