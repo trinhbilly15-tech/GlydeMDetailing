@@ -9,7 +9,9 @@
      1. Set  available: true
      2. Fill in  price: { sedan: 0, suv: 0 }  with real numbers
      3. Fill in the  includes: []  list
-   The tab, the price card, and the compare table all read from here.
+   The tabs and price card read from here, and the "Package tier" selector
+   appears by itself once two or more tiers are available. The price table
+   in index.html is plain HTML, so add a row there by hand.
    ============================================================= */
 
 var CATALOG = {
@@ -207,16 +209,15 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
     var service = CATALOG[state.service];
     var tier = service.tiers[state.tier];
 
-    /* --- tier tablist --- */
-    var tierTabs = TIER_ORDER.map(function (key) {
-      var t = service.tiers[key];
+    /* --- tier tablist — only tiers with real pricing, hidden while there's just one --- */
+    var availableTiers = TIER_ORDER.filter(function (key) { return service.tiers[key].available; });
+    var showTierTabs = availableTiers.length > 1;
+    var tierTabs = availableTiers.map(function (key) {
       var selected = key === state.tier;
-      var lock = t.available ? "" :
-        ' <svg class="lock" width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2" stroke="currentColor" stroke-width="2"/><path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7" stroke="currentColor" stroke-width="2"/></svg>';
       return '<button type="button" role="tab" id="tiertab-' + key + '"' +
         ' aria-selected="' + selected + '" aria-controls="tier-panel"' +
         ' tabindex="' + (selected ? "0" : "-1") + '" data-tier="' + key + '">' +
-        esc(TIER_LABELS[key]) + lock + "</button>";
+        esc(TIER_LABELS[key]) + "</button>";
     }).join("");
 
     /* --- vehicle radio group — only shown when there's a price to change --- */
@@ -304,13 +305,17 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
 
     panel.innerHTML =
       '<div class="panel-controls">' +
-        '<div class="control-group">' +
-          '<span class="control-label" id="tierlabel">Package tier</span>' +
-          '<div class="segmented" role="tablist" aria-labelledby="tierlabel" id="tier-tablist">' + tierTabs + "</div>" +
-        "</div>" +
+        (showTierTabs
+          ? '<div class="control-group">' +
+              '<span class="control-label" id="tierlabel">Package tier</span>' +
+              '<div class="segmented" role="tablist" aria-labelledby="tierlabel" id="tier-tablist">' + tierTabs + "</div>" +
+            "</div>"
+          : "") +
         vehicleControl +
       "</div>" +
-      '<div role="tabpanel" id="tier-panel" aria-labelledby="tiertab-' + state.tier + '" tabindex="0" class="tabpanel">' +
+      (showTierTabs
+        ? '<div role="tabpanel" id="tier-panel" aria-labelledby="tiertab-' + state.tier + '" tabindex="0" class="tabpanel">'
+        : '<div id="tier-panel" class="tabpanel">') +
         body +
       "</div>";
   }
@@ -442,10 +447,8 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
     var fields = [
       { id: "name",    errorId: "name-error",    label: "Name",    message: "Please enter your name so we know who we're talking to." },
       { id: "phone",   errorId: "phone-error",   label: "Phone",   message: "Please enter a phone number we can reach you at." },
-      { id: "email",   errorId: "email-error",   label: "Email",   message: "Please enter a valid email address." },
-      { id: "address", errorId: "address-error", label: "Service address", message: "Please enter the address where you'd like the detail done." },
-      { id: "water",   errorId: "water-error",   label: "Outdoor water spigot", message: "Please tell us whether there's an outdoor water spigot we can use." },
-      { id: "power",   errorId: "power-error",   label: "Electrical outlet", message: "Please tell us whether there's an outlet we can plug our extension cord into." }
+      { id: "email",   errorId: "email-error",   label: "Email",   message: "That email address doesn't look right — fix it or leave it blank.", optional: true },
+      { id: "message", errorId: "message-error", label: "Your question", message: "Please type your question so we know how to help." }
     ];
 
     function validateField(field) {
@@ -453,7 +456,8 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
       var errorEl = el(field.errorId);
       if (!input) return true;
 
-      var valid = input.checkValidity() && input.value.trim() !== "";
+      var empty = input.value.trim() === "";
+      var valid = field.optional ? (empty || input.checkValidity()) : (!empty && input.checkValidity());
       if (!valid) {
         input.setAttribute("aria-invalid", "true");
         if (errorEl) errorEl.textContent = field.message;
@@ -527,15 +531,17 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
   /* =========================================================
      8. Hero background video
      Plays the clips listed in data-clips one after another, then
-     loops. Skipped for reduced-motion and data-saver visitors.
+     loops. Skipped on phone-sized screens (saves mobile data) and for
+     reduced-motion and data-saver visitors.
      ========================================================= */
   var heroVideo = el("hero-video");
   var heroEl = el("home");
   var videoToggle = el("hero-video-toggle");
   var connection = navigator.connection || {};
   var saveData = connection.saveData || /2g$/.test(connection.effectiveType || "");
+  var phoneScreen = window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
 
-  if (heroVideo && heroEl && !reduce && !saveData) {
+  if (heroVideo && heroEl && !reduce && !saveData && !phoneScreen) {
     var heroMedia = heroVideo.parentElement;
     var clips = (heroVideo.getAttribute("data-clips") || "").split(",")
       .map(function (s) { return s.trim(); })

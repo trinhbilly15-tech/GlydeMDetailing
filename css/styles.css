@@ -453,8 +453,6 @@ button { font-family: inherit; }
   background: var(--cyan); color: var(--on-cyan);
   box-shadow: 0 4px 14px rgba(34,211,238,.3);
 }
-.segmented button .lock { opacity: .75; flex-shrink: 0; }
-.segmented button[aria-selected="true"] .lock { opacity: .85; }
 
 /* --- Tier detail body --- */
 .tier-body { display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--space-6); align-items: start; }
@@ -582,7 +580,7 @@ button { font-family: inherit; }
 .table-note { font-size: .9rem; color: var(--text-muted); max-width: 680px; }
 
 /* ============ Gallery ============ */
-.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-3); }
 .gallery-item {
   position: relative;
   aspect-ratio: 4 / 3;               /* reserves space — no layout shift */
@@ -741,9 +739,6 @@ label { font-size: .86rem; font-weight: 700; margin-bottom: 7px; color: var(--te
 .req { color: var(--cyan); }
 .hint { font-size: .8rem; color: var(--text-muted); font-weight: 500; margin-top: 5px; }
 
-.form-group { border: 0; padding: 0; margin: 0; min-width: 0; }
-.form-group legend { font-size: .95rem; font-weight: 700; color: var(--text-primary); padding: 0; margin-bottom: 4px; }
-.form-group > .hint { margin: 0 0 var(--space-3); }
 
 input, select, textarea {
   background: var(--surface-1);
@@ -812,6 +807,17 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
   background: var(--cyan); color: var(--on-cyan);
   align-items: center; justify-content: center;
   box-shadow: 0 12px 32px rgba(34,211,238,.42);
+  z-index: 90;
+}
+.mobile-text-fab {
+  display: none; position: fixed;
+  bottom: calc(max(var(--space-4), env(safe-area-inset-bottom)) + 70px);
+  right: calc(var(--space-4) + 3px);
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--surface-3); color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md);
   z-index: 90;
 }
 
@@ -890,7 +896,7 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
   .pay-card .btn { width: 100%; }
   .form-row-split { grid-template-columns: 1fr; gap: 0; }
   .footer-inner { grid-template-columns: 1fr; }
-  .mobile-call-fab { display: flex; }
+  .mobile-call-fab, .mobile-text-fab { display: flex; }
   .section { padding: var(--space-7) 0; }
   .area-list { grid-template-columns: 1fr; }
 }
@@ -923,6 +929,8 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
    overrides the earlier breakpoint padding without shifting layout when video starts) */
 .hero { padding-bottom: 112px; }
 @media (min-width: 1025px) { .hero { padding-bottom: 128px; } }
+/* Phones skip the video, so there's no pause button to make room for */
+@media (max-width: 767px) { .hero { padding-bottom: var(--space-6); } }
 @media (max-width: 1024px) {
   /* Copy spans the full width on smaller screens, so the scrim is even rather than left-weighted */
   .hero-media::after {
@@ -943,7 +951,7 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
 
 /* ============ Print ============ */
 @media print {
-  .site-header, .mobile-call-fab, .booking-embed, .menu-toggle { display: none !important; }
+  .site-header, .mobile-call-fab, .mobile-text-fab, .booking-embed, .menu-toggle { display: none !important; }
   body { background: #fff; color: #000; }
   .tabpanel[hidden] { display: block !important; }
 }
@@ -979,21 +987,6 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
 }
 .price-student svg { color: var(--cyan); flex-shrink: 0; margin-top: 1px; }
 .price-student strong { color: var(--text-primary); }
-
-.form-check {
-  display: flex; align-items: flex-start; gap: 12px;
-  min-height: 44px; margin-bottom: var(--space-4);
-}
-.form-check input[type="checkbox"] {
-  appearance: auto; -webkit-appearance: checkbox;
-  width: 22px; height: 22px; min-height: 0;
-  margin: 1px 0 0; padding: 0; border: 0; box-shadow: none;
-  flex-shrink: 0; cursor: pointer; accent-color: var(--cyan);
-}
-.form-check label {
-  margin: 0; font-weight: 600; font-size: .92rem; line-height: 1.45; cursor: pointer;
-}
-.form-check-note { color: var(--text-muted); font-weight: 500; }
 
 .theme-light .student-banner { background: var(--ice); border-color: #cbe5ee; }
 
