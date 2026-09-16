@@ -702,6 +702,20 @@ button { font-family: inherit; }
 /* ============ Contact ============ */
 .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--space-7); align-items: start; }
 .contact-list { margin-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+
+/* Opening hours — also published as openingHoursSpecification in the page's business data */
+.booking-hours { font-size: .92rem; color: var(--text-muted); margin: 10px 0 0; }
+.hours-block { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--border); max-width: 340px; }
+.hours-title {
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-2);
+}
+.hours-list { display: grid; gap: 6px; }
+.hours-list li {
+  display: flex; justify-content: space-between; gap: var(--space-4);
+  font-size: .94rem; color: var(--text-secondary); font-variant-numeric: tabular-nums;
+}
+.hours-list li span:first-child { font-weight: 600; color: var(--text-primary); }
 .contact-list li { display: flex; align-items: center; gap: 13px; font-weight: 600; }
 .contact-list svg { color: var(--cyan); flex-shrink: 0; }
 .contact-list a { transition: color var(--t-base); }
