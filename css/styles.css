@@ -315,6 +315,8 @@ button { font-family: inherit; }
 .hero-price-hint strong { color: var(--text-primary); font-size: 1.05rem; font-weight: 700; }
 
 .trust-bar { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); }
+/* Same row of one-liners reused below the steps, where it replaces the old value cards */
+.trust-strip { margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--border); }
 .trust-bar li {
   display: flex; align-items: center; gap: 9px;
   font-size: .89rem; font-weight: 600; color: var(--text-secondary);
@@ -334,25 +336,6 @@ button { font-family: inherit; }
 }
 .section h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 700; text-wrap: balance; }
 .section-lead { font-size: 1.04rem; margin-bottom: 0; }
-
-/* ============ Value props ============ */
-.value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
-.value-card {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5) var(--space-4);
-  transition: border-color var(--t-base), transform var(--t-base), box-shadow var(--t-base);
-}
-.value-card:hover { border-color: var(--border-strong); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.value-icon {
-  width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-sm);
-  background: rgba(34,211,238,.1); color: var(--cyan);
-  margin-bottom: var(--space-3);
-}
-.value-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
-.value-card p { font-size: .92rem; margin: 0; }
 
 /* =============================================================
    SERVICE TABS — the core of the pricing experience
@@ -845,7 +828,6 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
 }
 
 @media (max-width: 1024px) {
-  .value-grid { grid-template-columns: repeat(2, 1fr); }
   .tier-body { grid-template-columns: 1fr; gap: var(--space-5); }
   .price-card { position: static; }
   .contact-grid { grid-template-columns: 1fr; gap: var(--space-6); }
@@ -906,7 +888,6 @@ input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="
   .hero { padding: var(--space-6) 0; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
-  .value-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
   .price-amount { font-size: 2.8rem; }
   .area-card { padding: var(--space-4); }
@@ -1044,7 +1025,6 @@ html.theme-light {
 .theme-light .site-header { background: rgba(255,255,255,.95); }
 .theme-light .site-header.nav-open .main-nav { background: #fff; }
 
-.theme-light .value-icon { background: rgba(14,116,144,.08); }
 
 .theme-light .tab-service .tab-icon { background: var(--surface-1); }
 .theme-light .tab-service[aria-selected="true"] {
