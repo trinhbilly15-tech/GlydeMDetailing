@@ -1,0 +1,5 @@
+# Glyde Mobile Detailing
+User-agent: *
+Allow: /
+
+Sitemap: https://glydemdetailing.com/sitemap.xml

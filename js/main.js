@@ -446,7 +446,10 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
   if (form) {
     var fields = [
       { id: "name",    errorId: "name-error",    label: "Name",    message: "Please enter your name so we know who we're talking to." },
-      { id: "phone",   errorId: "phone-error",   label: "Phone",   message: "Please enter a phone number we can reach you at." },
+      { id: "phone",   errorId: "phone-error",   label: "Phone",   message: "Please enter a 10-digit phone number we can reach you at.",
+        // Count the digits rather than matching a format, so (470) 529-9949,
+        // 470-529-9949, 4705299949 and +1 470 529 9949 are all accepted.
+        test: function (value) { var digits = value.replace(/\D/g, ""); return digits.length >= 10 && digits.length <= 15; } },
       { id: "email",   errorId: "email-error",   label: "Email",   message: "That email address doesn't look right — fix it or leave it blank.", optional: true },
       { id: "message", errorId: "message-error", label: "Your question", message: "Please type your question so we know how to help." }
     ];
@@ -458,6 +461,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
 
       var empty = input.value.trim() === "";
       var valid = field.optional ? (empty || input.checkValidity()) : (!empty && input.checkValidity());
+      if (valid && !empty && field.test) valid = field.test(input.value);
       if (!valid) {
         input.setAttribute("aria-invalid", "true");
         if (errorEl) errorEl.textContent = field.message;
@@ -633,6 +637,103 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
     if (clips.length) {
       loadClip(0);
       tryPlay();
+    }
+  }
+
+  /* =========================================================
+     9. Before / after comparison slider
+
+     The markup renders as two side-by-side photos on its own. This
+     upgrades it into a drag-to-compare view; if anything here fails,
+     the two photos stay exactly as they are.
+
+     To add another pair, copy the whole <figure class="ba"> block in
+     index.html and swap the two image files.
+     ========================================================= */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ba]"), function (fig) {
+    var range = fig.querySelector("[data-ba-range]");
+    var frame = fig.querySelector(".ba-frame");
+    if (!range || !frame || !("clipPath" in document.documentElement.style)) return;
+
+    function paint() {
+      fig.style.setProperty("--ba-pos", range.value + "%");
+      range.setAttribute("aria-valuetext", range.value + "% of the after photo showing");
+    }
+
+    // Dragging anywhere on the photo moves the handle, not just the handle itself
+    function setFromPointer(e) {
+      var box = frame.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - box.left;
+      var pct = Math.max(0, Math.min(100, Math.round((x / box.width) * 100)));
+      range.value = pct;
+      paint();
+    }
+
+    var dragging = false;
+    frame.addEventListener("pointerdown", function (e) {
+      dragging = true;
+      setFromPointer(e);
+      if (frame.setPointerCapture && e.pointerId != null) frame.setPointerCapture(e.pointerId);
+    });
+    frame.addEventListener("pointermove", function (e) { if (dragging) setFromPointer(e); });
+    frame.addEventListener("pointerup", function () { dragging = false; });
+    frame.addEventListener("pointercancel", function () { dragging = false; });
+
+    // Keyboard and any other change to the range input
+    range.addEventListener("input", paint);
+
+    fig.classList.add("is-ready");
+    paint();
+  });
+
+  /* =========================================================
+     10. Booking calendar, loaded on approach
+
+     Calendly's script and its 700px frame are a big download that sits
+     ten screens down the page. This holds it back until the visitor is
+     close to it, or taps a link that jumps there.
+     ========================================================= */
+  var slot = el("calendly-slot");
+
+  if (slot) {
+    var calendlyLoaded = false;
+
+    function loadCalendar() {
+      if (calendlyLoaded) return;
+      calendlyLoaded = true;
+
+      var widget = document.createElement("div");
+      widget.className = "calendly-inline-widget";
+      widget.setAttribute("data-url", slot.getAttribute("data-calendly-url"));
+      widget.style.minWidth = "280px";
+      widget.style.height = "700px";
+
+      slot.innerHTML = "";
+      slot.appendChild(widget);
+      slot.classList.add("is-loaded");
+
+      var script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      script.onerror = function () {
+        slot.classList.remove("is-loaded");
+        slot.innerHTML = '<p class="calendly-loading">The booking calendar didn\'t load. ' +
+          'Please <a class="inline-link" href="tel:+14705299949">call or text 470-529-9949</a> and we\'ll get you scheduled.</p>';
+      };
+      document.body.appendChild(script);
+    }
+
+    // Anyone tapping a "Book" link should not wait for the scroll to finish
+    Array.prototype.forEach.call(document.querySelectorAll('a[href="#booking"]'), function (link) {
+      link.addEventListener("click", loadCalendar);
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries, observer) {
+        if (entries[0].isIntersecting) { loadCalendar(); observer.disconnect(); }
+      }, { rootMargin: "600px 0px" }).observe(slot);
+    } else {
+      loadCalendar();
     }
   }
 })();
