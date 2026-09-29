@@ -1202,3 +1202,23 @@ html.theme-light {
   .contact-list a { display: block; padding: 9px 0; }
   .owner-note { flex-direction: column; text-align: center; }
 }
+
+/* =====================================================================
+   Added 2026-09-29 — deposit policy and package table
+   ===================================================================== */
+.booking-deposit { font-size: .92rem; color: var(--text-secondary); margin: 6px 0 0; }
+
+.policy {
+  margin-top: var(--space-4); padding: var(--space-4);
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.policy h3 { margin: 0 0 14px; font-size: 1.05rem; }
+.policy ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.policy li { font-size: .93rem; color: var(--text-secondary); line-height: 1.55; }
+.policy li strong { color: var(--text-primary); }
+@media (min-width: 768px) {
+  .policy ul { grid-template-columns: 1fr 1fr; column-gap: var(--space-5); }
+}
+
+.compare-table .row-note { display: block; font-size: .8rem; font-weight: 500; color: var(--text-muted); }

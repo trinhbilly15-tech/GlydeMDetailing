@@ -25,20 +25,20 @@ var CATALOG = {
         available: true,
         popular: false,
         price: { sedan: 100, suv: 125 },
-        duration: "1.5 – 2.5 hours",
-        bestFor: "Routine upkeep & lease returns",
-        blurb: "A thorough top-to-bottom clean of everything you touch and see inside the car. We vacuum, wipe, degrease and deodorize the whole cabin so it feels fresh again — without the cost of a full restoration.",
+        duration: "About 1.5 hours",
+        bestFor: "Regular upkeep & busy schedules",
+        blurb: "A quick, thorough interior refresh that gets your cabin clean without the extras.",
         includes: [
-          { title: "Full interior vacuum", detail: "Carpets, floor mats, seats, seat rails, and trunk or cargo area." },
-          { title: "Vents, seams & crevices", detail: "Compressed air and detail brushes to pull dust out of the places a vacuum can't reach." },
-          { title: "Dash, console & door panels", detail: "Cleaned and finished with a non-greasy UV protectant to slow sun fading." },
-          { title: "Cup holders & compartments", detail: "Emptied, wiped out, and degreased — including the center console and glovebox exterior." },
-          { title: "Interior glass", detail: "Windshield, all windows and mirrors cleaned streak-free, including the inside rear glass." },
-          { title: "Door jambs wiped down", detail: "The dirt line you see every time you open the door — gone." },
-          { title: "Seat spot-cleaning", detail: "Light surface spots on cloth treated. Deep stains and full extraction are an add-on." },
-          { title: "Deodorize & finish", detail: "Cabin deodorizer and a final inspection walkthrough with you before we leave." }
+          { title: "Full interior vacuum", detail: "Carpets, floor mats, seats, and trunk or cargo area." },
+          { title: "Dash, console & door panels", detail: "Cleaned and finished with a non-greasy UV protectant." },
+          { title: "Vents, seams & crevices", detail: "Cleaned with compressed air and detail brushes." },
+          { title: "Cup holders & compartments", detail: "Emptied and wiped out." },
+          { title: "Interior glass", detail: "Cleaned streak-free." },
+          { title: "Door jambs", detail: "Wiped down." },
+          { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
+          { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Heavy stains, embedded pet hair, mold or strong odors need an add-on — see below."
+        excluded: "Deodorizer, seat spot-cleaning, pet hair, stains and odors are add-ons — see below."
       },
       premium: {
         name: "Premium Interior",
@@ -65,19 +65,20 @@ var CATALOG = {
         available: true,
         popular: false,
         price: { sedan: 100, suv: 125 },
-        duration: "1.5 – 2.5 hours",
-        bestFor: "Maintenance washes & restoring gloss",
-        blurb: "A proper hand wash — not a tunnel wash. We use safe two-bucket technique and plush microfiber so the paint comes out clean and glossy without the swirl marks automatic washes leave behind.",
+        duration: "About 1.5 hours",
+        bestFor: "Keeping paint protected between details",
+        blurb: "A safe, scratch-conscious wash that makes your car look sharp.",
         includes: [
-          { title: "Pre-rinse & foam bath", detail: "Loose grit is lifted off the paint before anything touches it, so it isn't dragged across your clear coat." },
-          { title: "Two-bucket hand wash", detail: "pH-neutral soap with grit guards — the method that protects paint instead of scratching it." },
-          { title: "Wheels, tires & wheel wells", detail: "Brake dust and road grime cleaned off the face and barrel of each wheel, plus the wells behind them." },
-          { title: "Tire dressing", detail: "A clean satin finish on the sidewalls — no greasy sling onto your paint." },
-          { title: "Exterior glass", detail: "All windows and mirrors cleaned for a clear, streak-free finish." },
-          { title: "Hand-dried, no swirls", detail: "Dried with plush microfiber towels — never a squeegee or a shared rag." },
-          { title: "Spray sealant for gloss", detail: "A protective spray wax that adds shine and helps water bead off for weeks." }
+          { title: "Pre-rinse & foam bath", detail: "Lifts loose grit before anything touches the paint." },
+          { title: "Two-bucket hand wash", detail: "pH-neutral soap and grit guards." },
+          { title: "Wheels & tires", detail: "Cleaned, with a satin tire dressing." },
+          { title: "Exterior glass", detail: "Cleaned streak-free." },
+          { title: "Door jambs", detail: "Wiped down." },
+          { title: "Hand-dried", detail: "With plush microfiber towels." },
+          { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
+          { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Paint correction, scratch removal and long-term ceramic coating aren't part of the Basic package."
+        excluded: "Spray sealant and wheel wells are add-ons — see below. Paint correction and long-term ceramic coating aren't part of Basic packages."
       },
       premium: {
         name: "Premium Exterior",
@@ -100,20 +101,19 @@ var CATALOG = {
     tagline: "Inside and out",
     tiers: {
       basic: {
-        name: "Basic Full Detail",
+        name: "Basic Interior + Exterior",
         available: true,
         popular: true,
         price: { sedan: 200, suv: 250 },
-        duration: "3 – 5 hours",
-        bestFor: "First-time clients, seasonal resets & pre-sale prep",
-        blurb: "Everything in the Basic Interior and Basic Exterior packages, done in one visit. This is the package most people book first — it resets the whole vehicle at once instead of chasing one half at a time.",
+        duration: "About 3 hours",
+        bestFor: "First-time clients & regular upkeep",
+        blurb: "Both Basic packages in one visit, with one appointment and one price.",
         includes: [
-          { title: "Everything in Basic Interior", detail: "Full vacuum, vents and crevices, dash and doors, glass, jambs, spot-cleaning and deodorizing." },
-          { title: "Everything in Basic Exterior", detail: "Foam pre-wash, two-bucket hand wash, wheels and tires, glass, hand-dry and spray sealant." },
-          { title: "Single appointment", detail: "One visit, one crew, one price — no scheduling the halves separately." },
-          { title: "Full walkthrough", detail: "We go around the finished vehicle with you before we pack up, so nothing gets missed." }
+          { title: "Everything in Basic Interior", detail: "Vacuum, vents and crevices, dash and doors, cup holders, interior glass and door jambs." },
+          { title: "Everything in Basic Exterior", detail: "Foam pre-rinse, two-bucket hand wash, wheels and tires, exterior glass and hand-dry." },
+          { title: "Glyde Care Check", detail: "One combined condition note and your next service date." }
         ],
-        excluded: "Deep extraction, pet hair, ceramic spray and odor treatment are available as add-ons."
+        excluded: "Add-ons like spray sealant, pet hair removal, extraction and odor treatment are priced separately — see below."
       },
       premium: {
         name: "Premium Full Detail",
