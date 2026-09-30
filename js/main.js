@@ -35,10 +35,11 @@ var CATALOG = {
           { title: "Cup holders & compartments", detail: "Emptied and wiped out." },
           { title: "Interior glass", detail: "Cleaned streak-free." },
           { title: "Door jambs", detail: "Wiped down." },
+          { title: "Deodorizer", detail: "Cabin deodorizer for a fresh finish." },
           { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
           { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Deodorizer, seat spot-cleaning, pet hair, stains and odors are add-ons — see below."
+        excluded: "Seat spot-cleaning, pet hair, stains and odors are add-ons — see below."
       },
       premium: {
         name: "Premium Interior",
@@ -72,13 +73,15 @@ var CATALOG = {
           { title: "Pre-rinse & foam bath", detail: "Lifts loose grit before anything touches the paint." },
           { title: "Two-bucket hand wash", detail: "pH-neutral soap and grit guards." },
           { title: "Wheels & tires", detail: "Cleaned, with a satin tire dressing." },
+          { title: "Wheel wells", detail: "Road grime cleaned from the wells behind each wheel." },
           { title: "Exterior glass", detail: "Cleaned streak-free." },
           { title: "Door jambs", detail: "Wiped down." },
           { title: "Hand-dried", detail: "With plush microfiber towels." },
+          { title: "Spray sealant", detail: "Protective spray wax that adds shine and helps water bead off for weeks." },
           { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
           { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Spray sealant and wheel wells are add-ons — see below. Paint correction and long-term ceramic coating aren't part of Basic packages."
+        excluded: "Paint correction and long-term ceramic coating aren't part of Basic packages. For longer-lasting protection, see the ceramic spray sealant add-on below."
       },
       premium: {
         name: "Premium Exterior",
@@ -109,11 +112,11 @@ var CATALOG = {
         bestFor: "First-time clients & regular upkeep",
         blurb: "Both Basic packages in one visit, with one appointment and one price.",
         includes: [
-          { title: "Everything in Basic Interior", detail: "Vacuum, vents and crevices, dash and doors, cup holders, interior glass and door jambs." },
-          { title: "Everything in Basic Exterior", detail: "Foam pre-rinse, two-bucket hand wash, wheels and tires, exterior glass and hand-dry." },
+          { title: "Everything in Basic Interior", detail: "Vacuum, vents and crevices, dash and doors, cup holders, interior glass, door jambs and deodorizer." },
+          { title: "Everything in Basic Exterior", detail: "Foam pre-rinse, two-bucket hand wash, wheels, tires and wheel wells, exterior glass, hand-dry and spray sealant." },
           { title: "Glyde Care Check", detail: "One combined condition note and your next service date." }
         ],
-        excluded: "Add-ons like spray sealant, pet hair removal, extraction and odor treatment are priced separately — see below."
+        excluded: "Add-ons like seat spot-cleaning, pet hair removal, extraction and odor treatment are priced separately — see below."
       },
       premium: {
         name: "Premium Full Detail",

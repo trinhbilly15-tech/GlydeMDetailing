@@ -1222,3 +1222,6 @@ html.theme-light {
 }
 
 .compare-table .row-note { display: block; font-size: .8rem; font-weight: 500; color: var(--text-muted); }
+
+/* An odd number of add-ons: let the last one span the row instead of sitting alone */
+.addon-grid > .addon-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
