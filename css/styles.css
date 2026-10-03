@@ -1225,3 +1225,12 @@ html.theme-light {
 
 /* An odd number of add-ons: let the last one span the row instead of sitting alone */
 .addon-grid > .addon-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* Header phone icon: when the number text is hidden, give the icon a thumb-sized target */
+@media (max-width: 860px) {
+  .tel-link { min-width: 44px; min-height: 44px; justify-content: center; padding: 0; }
+}
+
+/* Form fields may shrink on the narrowest phones (320px) instead of pushing the page sideways */
+.contact-form input, .contact-form textarea, .form-row-split > div { min-width: 0; }
+.contact-form input:not([type="hidden"]), .contact-form textarea { width: 100%; }
