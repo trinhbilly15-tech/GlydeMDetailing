@@ -1234,3 +1234,6 @@ html.theme-light {
 /* Form fields may shrink on the narrowest phones (320px) instead of pushing the page sideways */
 .contact-form input, .contact-form textarea, .form-row-split > div { min-width: 0; }
 .contact-form input:not([type="hidden"]), .contact-form textarea { width: 100%; }
+
+/* Optional "which service / when" dropdowns on the contact form */
+.contact-form select { min-width: 0; width: 100%; }
