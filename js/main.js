@@ -739,4 +739,47 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
       loadCalendar();
     }
   }
+
+  /* =========================================================
+     11. Gallery "See more" button
+
+     Shows the first two before/afters (one on phones) and keeps the rest (marked
+     gallery-more in index.html) behind a button, so the page stays
+     short on phones. Without this script every photo simply shows.
+     ========================================================= */
+  var pairs = el("gallery-pairs");
+  var moreBtn = el("gallery-more-btn");
+
+  if (pairs && moreBtn && pairs.querySelector(".gallery-more")) {
+    var hiddenFigures = function () {
+      return Array.prototype.filter.call(pairs.children, function (n) {
+        return n.tagName === "FIGURE" && getComputedStyle(n).display === "none";
+      });
+    };
+    var updateLabel = function () {
+      var n = hiddenFigures().length;
+      moreBtn.textContent = "See " + n + " more before & after" + (n === 1 ? "" : "s");
+    };
+
+    pairs.classList.add("is-collapsed");
+    moreBtn.setAttribute("aria-expanded", "false");
+    moreBtn.hidden = false;
+    updateLabel();
+
+    // phones hide one more pair than larger screens, so recount when the width changes
+    var phoneQuery = window.matchMedia && window.matchMedia("(max-width: 560px)");
+    if (phoneQuery) {
+      if (phoneQuery.addEventListener) phoneQuery.addEventListener("change", updateLabel);
+      else if (phoneQuery.addListener) phoneQuery.addListener(updateLabel);
+    }
+
+    moreBtn.addEventListener("click", function () {
+      var first = hiddenFigures()[0];
+      pairs.classList.remove("is-collapsed");
+      moreBtn.setAttribute("aria-expanded", "true");
+      moreBtn.hidden = true;
+      // move keyboard and screen-reader focus to the first newly shown photo
+      if (first) { first.setAttribute("tabindex", "-1"); first.focus({ preventScroll: true }); }
+    });
+  }
 })();

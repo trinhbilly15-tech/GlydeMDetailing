@@ -30,7 +30,7 @@
   a cached copy (they hold onto these for up to 7 days). Change it to today's date
   whenever you upload a new styles.css or main.js.
 -->
-<link rel="stylesheet" href="css/styles.css?v=20261011">
+<link rel="stylesheet" href="css/styles.css?v=20261016">
 
 <!-- Marks that JS is available, so scroll-reveal only hides content it can reveal again. -->
 <script>document.documentElement.classList.add("js");</script>
@@ -353,10 +353,83 @@
         <p class="section-lead">Before-and-after shots from vehicles we've detailed around Kennesaw.</p>
       </div>
 
-      <!-- gallery-single centres one comparison. With two or more <figure class="ba"> blocks,
-           delete gallery-single and they lay out side by side. -->
-      <div class="gallery-grid gallery-single reveal">
-        <figure class="ba" data-ba>
+      <!--
+        HOW TO ADD A BEFORE/AFTER: copy one <figure class="ba ba-static"> block below, change the two
+        image files, the alt text and the caption. Shots side by side need no special care.
+
+        The first two figures always show (just the first on phones). Anything marked "gallery-more" sits behind the
+        "See more" button until a visitor asks for it, which keeps the page short on phones.
+
+        A figure with data-ba (the last one) is a drag-to-compare slider. Only use that when the
+        before and after were taken from exactly the same spot, height and zoom, or the car will
+        appear to jump as the handle moves.
+      -->
+      <div class="gallery-pairs is-collapsible reveal" id="gallery-pairs">
+        <figure class="ba ba-static">
+          <div class="ba-frame">
+            <div class="ba-pane ba-before">
+              <span class="gallery-tag">Before</span>
+              <img src="images/camry-trunk-before.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="Camry trunk before detailing: dusty rubber trunk mat with a crumpled receipt, a candy wrapper and other litter">
+            </div>
+            <div class="ba-pane ba-after">
+              <span class="gallery-tag">After</span>
+              <img src="images/camry-trunk-after.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="The same Camry trunk after detailing: litter removed and the rubber trunk mat cleaned">
+            </div>
+          </div>
+          <figcaption class="ba-caption">Toyota Camry &middot; trunk</figcaption>
+        </figure>
+
+        <figure class="ba ba-static">
+          <div class="ba-frame">
+            <div class="ba-pane ba-before">
+              <span class="gallery-tag">Before</span>
+              <img src="images/camry-console-before.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="Camry center console before detailing: crumbs and dust across the gloss-black trim and inside the cupholders">
+            </div>
+            <div class="ba-pane ba-after">
+              <span class="gallery-tag">After</span>
+              <img src="images/camry-console-after.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="The same center console after detailing: gloss-black trim and cupholders wiped clean">
+            </div>
+          </div>
+          <figcaption class="ba-caption">Toyota Camry &middot; center console</figcaption>
+        </figure>
+
+        <figure class="ba ba-static gallery-more">
+          <div class="ba-frame">
+            <div class="ba-pane ba-before">
+              <span class="gallery-tag">Before</span>
+              <img src="images/camry-footwell-before.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="Camry driver's footwell before detailing: rubber floor mat covered in dirt, sand and leaf debris">
+            </div>
+            <div class="ba-pane ba-after">
+              <span class="gallery-tag">After</span>
+              <img src="images/camry-footwell-after.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="The driver's side after detailing: floor mat, pedals and door sill clean">
+            </div>
+          </div>
+          <figcaption class="ba-caption">Toyota Camry &middot; driver&rsquo;s footwell</figcaption>
+        </figure>
+
+        <figure class="ba ba-static gallery-more">
+          <div class="ba-frame">
+            <div class="ba-pane ba-before">
+              <span class="gallery-tag">Before</span>
+              <img src="images/camry-rear-before.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="Camry rear seat and floor mat before detailing, with crumbs and debris on the mat">
+            </div>
+            <div class="ba-pane ba-after">
+              <span class="gallery-tag">After</span>
+              <img src="images/camry-rear-after.jpg" width="1200" height="900" loading="lazy" decoding="async"
+                   alt="The rear seat and floor after detailing, with the floor mats cleaned">
+            </div>
+          </div>
+          <figcaption class="ba-caption">Toyota Camry &middot; rear seat &amp; floor</figcaption>
+        </figure>
+
+        <figure class="ba gallery-more" data-ba>
           <div class="ba-frame">
             <div class="ba-pane ba-before">
               <span class="gallery-tag">Before</span>
@@ -375,6 +448,8 @@
           <figcaption class="ba-caption">Interior detail &middot; trunk &mdash; drag the handle to compare</figcaption>
         </figure>
       </div>
+
+      <button type="button" class="btn btn-ghost gallery-more-btn" id="gallery-more-btn" aria-controls="gallery-pairs" hidden>See more before &amp; afters</button>
     </div>
   </section>
 
@@ -876,6 +951,6 @@
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v3.6c0 .6-.4 1-1 1C10.5 21.1 2.9 13.5 2.9 4.7c0-.6.4-1 1-1H7.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8Z" fill="currentColor"/></svg>
 </a>
 
-<script src="js/main.js?v=20261011"></script>
+<script src="js/main.js?v=20261016"></script>
 </body>
 </html>
