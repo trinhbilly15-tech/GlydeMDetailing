@@ -61,26 +61,23 @@ var CATALOG = {
     tagline: "Wash, wheels & shine",
     tiers: {
       basic: {
-        name: "Basic Exterior",
+        name: "Exterior Wash",
         available: true,
         popular: false,
-        price: { sedan: 100, suv: 125 },
-        duration: "About 1.5 hours",
-        bestFor: "Keeping paint protected between details",
-        blurb: "A safe, scratch-conscious wash that makes your car look sharp.",
+        price: { sedan: 75, suv: 125 },
+        duration: "About 1 hour",
+        bestFor: "Keeping your car sharp between details",
+        blurb: "A safe, scratch-conscious hand wash that makes your car look sharp.",
         includes: [
           { title: "Pre-rinse & foam bath", detail: "Lifts loose grit before anything touches the paint." },
           { title: "Two-bucket hand wash", detail: "pH-neutral soap and grit guards." },
-          { title: "Wheels & tires", detail: "Cleaned, with a satin tire dressing." },
-          { title: "Wheel wells", detail: "Road grime cleaned from the wells behind each wheel." },
+          { title: "Wheels, tires & wheel wells", detail: "Cleaned, with a tire shine to finish." },
           { title: "Exterior glass", detail: "Cleaned streak-free." },
-          { title: "Door jambs", detail: "Wiped down." },
           { title: "Hand-dried", detail: "With plush microfiber towels." },
-          { title: "Spray sealant", detail: "Protective spray wax that adds shine and helps water bead off for weeks." },
           { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
           { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Paint correction and long-term ceramic coating aren't part of Basic packages. For longer-lasting protection, see the ceramic spray sealant add-on below."
+        excluded: "Paint correction and long-term ceramic coating aren't included. For longer-lasting protection, see the ceramic spray sealant add-on below."
       },
       premium: {
         name: "Premium Exterior",
