@@ -139,9 +139,9 @@ var VEHICLES = {
   suv: "SUV / Truck"
 };
 
-/* Student discount on package prices (0.20 = 20%). Set to 0 to hide the student price
-   in the package tabs — the "20%" wording in index.html must then be removed by hand. */
-var STUDENT_DISCOUNT = 0.20;
+/* Student discount on package prices (0.10 = 10%). Set to 0 to hide the student price
+   in the package tabs — the "10%" wording in index.html must then be removed by hand. */
+var STUDENT_DISCOUNT = 0.10;
 
 var TIER_ORDER = ["basic", "premium", "ultimate"];
 var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
