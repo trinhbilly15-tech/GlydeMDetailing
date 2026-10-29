@@ -276,7 +276,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
             "</div>" +
             '<div class="price-card-actions">' +
               '<a class="btn btn-primary btn-block" href="#booking">Book this package</a>' +
-              '<a class="btn btn-ghost btn-block" href="tel:+14705299949">Call or text for a quote</a>' +
+              '<a class="btn btn-ghost btn-block" href="tel:+16787199524">Call or text for a quote</a>' +
             "</div>" +
             '<p class="price-note">' + esc(tier.excluded) + "</p>" +
           "</aside>" +
@@ -298,7 +298,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
             '<p class="price-soon">Coming soon</p>' +
             '<p class="price-vehicle">Custom quotes available now</p>' +
             '<div class="price-card-actions">' +
-              '<a class="btn btn-primary btn-block" href="tel:+14705299949">Call or text for a quote</a>' +
+              '<a class="btn btn-primary btn-block" href="tel:+16787199524">Call or text for a quote</a>' +
               '<a class="btn btn-ghost btn-block" href="#contact">Send us a message</a>' +
             "</div>" +
             '<p class="price-note">Ask us about custom work — we\'ll inspect your vehicle and give you a firm price before starting.</p>' +
@@ -432,7 +432,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
       if ((payBtn.getAttribute("href") || "").indexOf("YOUR-STRIPE-PAYMENT-LINK") !== -1) {
         e.preventDefault();
         if (payStatus) {
-          payStatus.textContent = "Online payment isn't switched on yet — please pay your detailer directly, or call 470-529-9949.";
+          payStatus.textContent = "Online payment isn't switched on yet — please pay your detailer directly, or call 678-719-9524.";
         }
       }
     });
@@ -450,8 +450,8 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
     var fields = [
       { id: "name",    errorId: "name-error",    label: "Name",    message: "Please enter your name so we know who we're talking to." },
       { id: "phone",   errorId: "phone-error",   label: "Phone",   message: "Please enter a 10-digit phone number we can reach you at.",
-        // Count the digits rather than matching a format, so (470) 529-9949,
-        // 470-529-9949, 4705299949 and +1 470 529 9949 are all accepted.
+        // Count the digits rather than matching a format, so (678) 719-9524,
+        // 678-719-9524, 6787199524 and +1 678 719 9524 are all accepted.
         test: function (value) { var digits = value.replace(/\D/g, ""); return digits.length >= 10 && digits.length <= 15; } },
       { id: "email",   errorId: "email-error",   label: "Email",   message: "That email address doesn't look right — fix it or leave it blank.", optional: true },
       { id: "message", errorId: "message-error", label: "Your question", message: "Please type your question so we know how to help." }
@@ -503,7 +503,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
       if (actionUrl.indexOf("YOUR-FORM-ID") !== -1) {
         e.preventDefault();
         if (statusEl) {
-          statusEl.textContent = "The form isn't connected yet — please call or text 470-529-9949 instead.";
+          statusEl.textContent = "The form isn't connected yet — please call or text 678-719-9524 instead.";
           statusEl.className = "form-status error";
         }
         return;
@@ -721,7 +721,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
       script.onerror = function () {
         slot.classList.remove("is-loaded");
         slot.innerHTML = '<p class="calendly-loading">The booking calendar didn\'t load. ' +
-          'Please <a class="inline-link" href="tel:+14705299949">call or text 470-529-9949</a> and we\'ll get you scheduled.</p>';
+          'Please <a class="inline-link" href="tel:+16787199524">call or text 678-719-9524</a> and we\'ll get you scheduled.</p>';
       };
       document.body.appendChild(script);
     }
