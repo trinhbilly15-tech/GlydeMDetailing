@@ -65,7 +65,7 @@ var CATALOG = {
         available: true,
         popular: false,
         price: { sedan: 75, suv: 125 },
-        duration: "About 1 hour",
+        duration: "About 45 minutes",
         bestFor: "Keeping your car sharp between details",
         blurb: "A safe, scratch-conscious hand wash that makes your car look sharp.",
         includes: [
