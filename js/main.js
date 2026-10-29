@@ -64,7 +64,7 @@ var CATALOG = {
         name: "Exterior Wash",
         available: true,
         popular: false,
-        price: { sedan: 100, suv: 125 },
+        price: { sedan: 100, suv: 150 },
         duration: "About 45 minutes",
         bestFor: "Keeping your car sharp between details",
         blurb: "A safe, scratch-conscious hand wash that makes your car look sharp.",
