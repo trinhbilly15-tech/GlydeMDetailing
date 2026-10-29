@@ -289,7 +289,7 @@ var TIER_LABELS = { basic: "Basic", premium: "Premium", ultimate: "Ultimate" };
               "<p><strong>We're still finalizing this package.</strong> " + esc(tier.blurb) +
               " In the meantime we can quote this work custom — call or text and describe your vehicle, and we'll tell you exactly what it needs and what it costs.</p>" +
             "</div>" +
-            "<p>Every Basic package can also be built up with add-ons (extraction, pet hair, ceramic spray, odor treatment) to cover most of what a higher tier would include. Scroll down to see those options and pricing.</p>" +
+            "<p>Every package can also be built up with add-ons (shampoo, stain treatment, pet hair, ceramic spray) to cover most of what a higher tier would include. Scroll down to see those options and pricing.</p>" +
           "</div>" +
 
           '<aside class="price-card">' +
