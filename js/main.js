@@ -21,25 +21,24 @@ var CATALOG = {
     tagline: "Cabin deep-clean",
     tiers: {
       basic: {
-        name: "Basic Interior",
+        name: "Interior Detail",
         available: true,
         popular: false,
-        price: { sedan: 100, suv: 125 },
-        duration: "About 1.5 hours",
-        bestFor: "Regular upkeep & busy schedules",
-        blurb: "A quick, thorough interior refresh that gets your cabin clean without the extras.",
+        price: { sedan: 200, suv: 250 },
+        duration: "About 2 hours",
+        bestFor: "A clean, conditioned cabin",
+        blurb: "A thorough interior clean that leaves every surface cleaned, protected and conditioned.",
         includes: [
           { title: "Full interior vacuum", detail: "Carpets, floor mats, seats, and trunk or cargo area." },
           { title: "Dash, console & door panels", detail: "Cleaned and finished with a non-greasy UV protectant." },
-          { title: "Vents, seams & crevices", detail: "Cleaned with compressed air and detail brushes." },
-          { title: "Cup holders & compartments", detail: "Emptied and wiped out." },
+          { title: "Leather & vinyl conditioning", detail: "Seats and trim conditioned to keep them soft and protected." },
+          { title: "Vents, cup holders & crevices", detail: "Cleaned with compressed air and detail brushes." },
           { title: "Interior glass", detail: "Cleaned streak-free." },
           { title: "Door jambs", detail: "Wiped down." },
-          { title: "Deodorizer", detail: "Cabin deodorizer for a fresh finish." },
           { title: "Final walkthrough", detail: "Your detailer goes over the finished job with you before leaving." },
           { title: "Glyde Care Check", detail: "A quick condition note and your recommended next service date." }
         ],
-        excluded: "Seat spot-cleaning, pet hair, stains and odors are add-ons — see below."
+        excluded: "Carpet and seat shampoo, stain treatment, deodorizer and pet hair are add-ons — see below."
       },
       premium: {
         name: "Premium Interior",
@@ -104,19 +103,22 @@ var CATALOG = {
     tagline: "Inside and out",
     tiers: {
       basic: {
-        name: "Basic Interior + Exterior",
+        name: "Full Detail",
         available: true,
         popular: true,
-        price: { sedan: 200, suv: 250 },
+        price: { sedan: 300, suv: 350 },
         duration: "About 3 hours",
-        bestFor: "First-time clients & regular upkeep",
-        blurb: "Both Basic packages in one visit, with one appointment and one price.",
+        bestFor: "First-time clients & a complete reset",
+        blurb: "Everything in the Interior Detail plus a full exterior wash, in one visit.",
         includes: [
-          { title: "Everything in Basic Interior", detail: "Vacuum, vents and crevices, dash and doors, cup holders, interior glass, door jambs and deodorizer." },
-          { title: "Everything in Basic Exterior", detail: "Foam pre-rinse, two-bucket hand wash, wheels, tires and wheel wells, exterior glass, hand-dry and spray sealant." },
+          { title: "Everything in the Interior Detail", detail: "Vacuum, dash and doors, leather and vinyl conditioning, vents and crevices, interior glass and door jambs." },
+          { title: "Foam bath & hand wash", detail: "Lifts loose grit first, then a pH-neutral two-bucket hand wash." },
+          { title: "Wheels, tires & wheel wells", detail: "Cleaned, with a tire shine to finish." },
+          { title: "Exterior glass", detail: "Cleaned streak-free." },
+          { title: "Spray sealant", detail: "Protective spray wax that adds shine and helps water bead off for weeks." },
           { title: "Glyde Care Check", detail: "One combined condition note and your next service date." }
         ],
-        excluded: "Add-ons like seat spot-cleaning, pet hair removal, extraction and odor treatment are priced separately — see below."
+        excluded: "Carpet and seat shampoo, stain treatment, deodorizer and pet hair are add-ons — see below."
       },
       premium: {
         name: "Premium Full Detail",
